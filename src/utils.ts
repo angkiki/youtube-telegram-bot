@@ -1,6 +1,6 @@
 import { ACCEPTED_COMMANDS, VALID_TELEGRAM_IDS } from './constants';
 
-export const validateValidUserId = (id: string): boolean => {
+export const validateValidUserId = (id: number): boolean => {
     return VALID_TELEGRAM_IDS.includes(id);
 };
 

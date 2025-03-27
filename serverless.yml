@@ -16,8 +16,7 @@ functions:
           path: telegram-webhook
           method: post
 
-plugins:
-  - serverless-esbuild
+plugins: []
 
 custom:
   esbuild:

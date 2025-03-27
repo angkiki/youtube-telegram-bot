@@ -12,6 +12,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
             return { statusCode: 400, body: JSON.stringify({ error: "No valid message received" }) };
         }
 
+        console.log('message', message)
         const userId = message.from?.id;
         const chatId = message.chat?.id;
 

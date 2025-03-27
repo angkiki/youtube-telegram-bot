@@ -23,13 +23,20 @@ export const handler: APIGatewayProxyHandler = async (event) => {
         const chatId = message.chat?.id;
         const { text } = message;
 
-        if (!validateValidUserId(userId) || !chatId || !text) {
+        if (!chatId || !text) {
+            console.log('No valid chat ID or Text');
+            return { statusCode: 200, body: '' };
+        }
+
+        if (!validateValidUserId(userId)) {
+            console.log('Not a valid User ID:', userId);
             return { statusCode: 200, body: '' };
         }
 
         const { command, rest } = extractCommandFromMessage(text);
 
         if (!isKnownCommand(command)) {
+            console.log('Not a known command:', command);
             return { statusCode: 200, body: '' };
         }
 

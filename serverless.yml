@@ -13,8 +13,8 @@ functions:
   botHandler:
     handler: dist/index.handler
     events:
-      - http:
-          path: telegram-webhook
+      - httpApi:
+          path: /telegram-webhook
           method: post
 
 plugins: []

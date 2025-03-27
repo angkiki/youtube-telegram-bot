@@ -11,7 +11,7 @@ provider:
 
 functions:
   botHandler:
-    handler: dist/index.handler
+    handler: index.handler
     events:
       - httpApi:
           path: /telegram-webhook
@@ -33,5 +33,5 @@ package:
   individually: true
   patterns:
     - "!node_modules/**"
-    - "dist/**"
+    - "dist/index.js"
 

@@ -1,7 +1,6 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
-import axios from "axios";
-
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
+// import axios from "axios";
+// const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
 
 export const handler: APIGatewayProxyHandler = async (event) => {
     try {
@@ -20,12 +19,12 @@ export const handler: APIGatewayProxyHandler = async (event) => {
             return { statusCode: 400, body: JSON.stringify({ error: "Invalid message format" }) };
         }
 
-        await axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        /* await axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
             chat_id: chatId,
             text: `Your user ID is: ${userId}`,
-        });
+        }); */
 
-        return { statusCode: 200, body: JSON.stringify({ message: "User ID sent" }) };
+        return { statusCode: 200, body: JSON.stringify({ message: "User ID sent", method: "sendMessage", chat_id: chatId }) };
     } catch (error) {
         console.error("Error processing Telegram message:", error);
         return { statusCode: 500, body: JSON.stringify({ error: "Internal server error" }) };

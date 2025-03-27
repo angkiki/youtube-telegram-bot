@@ -1,0 +1,38 @@
+service: youtube-bot-lambda
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 128
+  timeout: 10
+  environment:
+    TELEGRAM_BOT_TOKEN: ${ssm:/youtube-bot/token}
+    TELEGRAM_CHAT_ID: ${ssm:/youtube-bot/chat_id}
+
+functions:
+  botHandler:
+    handler: dist/index.handler
+    events:
+      - http:
+          path: telegram-webhook
+          method: post
+
+plugins:
+  - serverless-esbuild
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: false
+    target: "node18"
+    platform: "node"
+    outExtension:
+      .js: .js
+
+package:
+  individually: true
+  patterns:
+    - "!node_modules/**"
+    - "dist/**"
+

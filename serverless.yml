@@ -11,7 +11,7 @@ provider:
 
 functions:
   botHandler:
-    handler: index.handler
+    handler: dist/index.handler
     events:
       - httpApi:
           path: /telegram-webhook
@@ -19,19 +19,9 @@ functions:
 
 plugins: []
 
-custom:
-  esbuild:
-    bundle: true
-    minify: true
-    sourcemap: false
-    target: "node18"
-    platform: "node"
-    outExtension:
-      .js: .js
-
 package:
   individually: true
   patterns:
     - "!node_modules/**"
-    - "dist/index.js"
+    - "dist/**"
 

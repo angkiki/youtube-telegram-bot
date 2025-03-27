@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Log in to Serverless Framework
+        run: npx serverless login --token ${{ secrets.SEVERLESS_API_TOKEN }}
+
       - name: Deploy with Serverless
         run: npx serverless deploy
         env:

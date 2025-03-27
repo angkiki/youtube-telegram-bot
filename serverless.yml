@@ -6,8 +6,7 @@ provider:
   memorySize: 128
   timeout: 10
   environment:
-    TELEGRAM_BOT_TOKEN: ${ssm:/youtube-bot/token}
-    TELEGRAM_CHAT_ID: ${ssm:/youtube-bot/chat_id}
+    TELEGRAM_BOT_TOKEN: ${env:TELEGRAM_BOT_TOKEN}
 
 functions:
   botHandler:

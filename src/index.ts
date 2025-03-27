@@ -23,7 +23,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                message: `Your User ID is: ${userId}`,
+                text: `Your User ID is: ${userId}`,
                 method: "sendMessage",
                 chat_id: chatId
             })

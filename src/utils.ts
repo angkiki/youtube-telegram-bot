@@ -6,10 +6,10 @@ export const validateValidUserId = (id: number): boolean => {
 
 export const extractCommandFromMessage = (message: string) => {
     const messageChunks = message.split(' ');
-    const [command, rest] = messageChunks;
+    const [command, ...rest] = messageChunks;
     return {
         command,
-        rest,
+        rest: rest.join(' '),
     };
 };
 
